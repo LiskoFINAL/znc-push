@@ -623,13 +623,23 @@ class CPushMod : public CModule
 
 				params["message"] = message_content;
 
-				// set service_host to ntfy.sh if no host is specified
-				service_host = options["host"];
-				if (service_host == "")
-				{
-					service_host = "ntfy.sh";
-				}
-				service_url = CString("https://") + service_host + CString("/") + options["target"] + CString("/publish");
+				CString custom_host = options["host"];
+                if (custom_host == "") {
+                    custom_host = "ntfy.sh";
+                }
+				use_ssl=true;
+                 // Split out the host and optional port number
+                CString::size_type count;
+                VCString parts;
+                count = custom_host.Split(":", parts, false);
+
+                if (count > 1) {
+                    use_port = parts[1].ToInt();
+                }
+
+                service_host = parts[0];
+                service_url = CString("https://") + service_host + CString("/") + options["target"] + CString("/publish");
+				
 
 				// "ntfy.sh/mywebhook/publish?message=Webhook+triggered&priority=high&tags=warning,skull"
 
