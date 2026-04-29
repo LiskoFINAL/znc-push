@@ -131,6 +131,7 @@ class CPushMod : public CModule
 			defaults["secret"] = "";
 			defaults["target"] = "";
 			defaults["extra_target"] = "";
+			defaults["host"] = "";
 
 			// Notification settings
 			defaults["message_content"] = "{context}: [{nick}] {message}";
