@@ -621,14 +621,15 @@ class CPushMod : public CModule
 					params["tags"] = options["tags"];
 				}
 
+				params["title"] = message_title;
 				params["message"] = message_content;
 
 				CString custom_host = options["host"];
                 if (custom_host == "") {
                     custom_host = "ntfy.sh";
                 }
-				use_ssl=true;
-                 // Split out the host and optional port number
+				use_ssl = true;
+                // Split out the host and optional port number
                 CString::size_type count;
                 VCString parts;
                 count = custom_host.Split(":", parts, false);
