@@ -1715,7 +1715,7 @@ class CPushMod : public CModule
 			// HELP command
 			else if (action == "help")
 			{
-				PutModule("View the detailed documentation at https://github.com/amyreese/znc-push/blob/master/README.md");
+				PutModule("View the detailed documentation at https://github.com/LiskoFINAL/znc-push/blob/master/README.md");
 			}
 			// VERSION command
 			else if (action == "version")
